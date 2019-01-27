@@ -1,14 +1,17 @@
 ﻿# TheFaustFlick Project
 #
 # Scope: 1) Release of #TheFaustFlick (TFF) White Paper (Business Plan)
-#        2) Issuance and ICO of #TheFaustFlick Token or TFF Token (ERC-20)
-#        3) Development of a Film Business Buster or FBB Smart Contract (TM)
-#        4) Test-Case #TheFaustFlick Film Project on the FBB Smart Contract (TM)
+#        2) Development of TFF_Token (ERC-20) Smart Contract
+#        3) Development of TFF_Token Pre-Sale Smart Contract
+#        4) Development of TFF_Token Initial Coin Offering Smart Contract
+#        5) Development of the Film Business Buster or FBB Smart Contract (TM)
+#        6) Test-Case #TheFaustFlick Film Project on the FBB Smart Contract (TM)
 #
 # Timing: White Paper Release     - February 1st 2019
+#         TFF_Token Creation      - February 15th 2019
 #         TFF Token Pre-Sale      - March 1st 2019
 #         TFF Token ICO           - June  1st 2019
-#         FBB Smart Contract Live - June  1st 2019
+#         FBB Smart Contract      - June  1st 2019
 #         TFF Filmmaking Process  - July 15th 2019 - June 30th 2020
 #         TFF Film Business Cycle - July  1st 2020 - Dec  31st 2020
 #
