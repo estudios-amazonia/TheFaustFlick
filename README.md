@@ -12,14 +12,14 @@ Scope
 
  Timing
  ------
- - White Paper                Feb  1st 2019 ✔
- - TFF_Token                  Mar  1st 2019
+ - White Paper              [ Feb  1st 2019 ] ✔
+ - TFF_Token                [ Mar  1st 2019 ]
  - TFF Token Direct Presale [ Mar  1st 2019 ]
  - TFF Token ICO            [ Apr  1st 2019 - Jul 14th 2019 ]
- - FBB Smart Contract         Jun  1st 2019
+ - FBB Smart Contract       [ Jun  1st 2019 ]
  - TFF Filmmaking Process   [ Jul 15th 2019 - Jun 30th 2020 ]
  - TFF Film Business Cycle  [ Jul  1st 2020 - Dec 31st 2020 ]
- - Net Profits Proceeds       Jan  1st 2021
+ - Net Profits Proceeds     [ Jan  1st 2021 ]
 
  TFF Technical Team
  ------------------
