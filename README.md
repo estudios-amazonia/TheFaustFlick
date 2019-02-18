@@ -39,11 +39,15 @@ Scope
 
  Social Networks
  ---------------
- - http://estudios-amazonia.com http://TheFaustFlick.com http://TheFaustFlick.ico
- - https://www.facebook.com/estudios.amazonia https://www.facebook.com/TheFaustFlick/
+ - http://TheFaustFlick.com 
+ - http://estudios-amazonia.com
+ - https://www.facebook.com/TheFaustFlick/
+ - https://www.facebook.com/estudios.amazonia
  - https://www.linkedin.com/company/estudios-amazonia/
- - https://twitter.com/caressinghearts https://twitter.com/TFF_Token
- - https://twitter.com/flickmaking https://twitter.com/TheFaustFlick
+ - https://twitter.com/TFF_Token
+ - https://twitter.com/flickmaking
+ - https://twitter.com/TheFaustFlick
+ - https://twitter.com/caressinghearts
  - https://www.instagram.com/TheFaustFlick
  - https://t.me/TheFaustFlick
  - https://medium.com/@flickmaking
