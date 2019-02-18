@@ -48,7 +48,7 @@ Scope
  - https://twitter.com/flickmaking
  - https://twitter.com/TheFaustFlick
  - https://twitter.com/caressinghearts
- - https://www.instagram.com/TheFaustFlick
  - https://t.me/TheFaustFlick
  - https://medium.com/@flickmaking
+ - https://www.instagram.com/TheFaustFlick
  - https://github.com/estudios-amazonia/TheFaustFlick
