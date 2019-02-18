@@ -37,18 +37,24 @@ Scope
  - http://estudios-amazonia.com/TheFaustFlick_WP.pdf
  - https://docs.google.com/document/d/1OPnDEDW09s414ufTlwmjnVIvgadlUgwXml2zVrAQitI/edit?usp=sharing
 
- Social Networks
+ WebSites
  ---------------
  - http://TheFaustFlick.com 
  - http://estudios-amazonia.com
- - https://www.facebook.com/TheFaustFlick/
- - https://www.facebook.com/estudios.amazonia
- - https://www.linkedin.com/company/estudios-amazonia/
+
+ Social Networks
+ ---------------
+ - https://t.me/TheFaustFlick
  - https://twitter.com/TFF_Token
  - https://twitter.com/flickmaking
  - https://twitter.com/TheFaustFlick
  - https://twitter.com/caressinghearts
- - https://t.me/TheFaustFlick
- - https://medium.com/@flickmaking
  - https://www.instagram.com/TheFaustFlick
+ - https://www.facebook.com/TheFaustFlick/
+ - https://www.facebook.com/estudios.amazonia
+ - https://www.linkedin.com/company/estudios-amazonia/
+
+ Publications
+ ------------
+ - https://medium.com/@flickmaking
  - https://github.com/estudios-amazonia/TheFaustFlick
