@@ -7,7 +7,7 @@ import "zos-lib/contracts/Initializable.sol";
 
 /**
  * @title TFF_Token
- * @dev ERC721 minting logic with metadata, leveraging ZeppelinOS EVM
+ * @dev ERC721 minting logic with metadata, leveraging secured ZeppelinOS EVM
  */
 
 contract TFF_Token is Initializable, ERC721, ERC721Metadata, MinterRole, Ownable {
