@@ -5,58 +5,58 @@ import "openzeppelin-eth/contracts/ownership/Ownable.sol";
 
 /**
  * @title ABC_Token
- * @dev ERC20 minting logic, leveraging secured and upgradeable ZeppelinOS EVM
+ * @dev ERC20 minting logic, leveraging secured ZeppelinOS EVM
  * @dev It also includes functions from ERC20Detailed
  */
 
 contract ABC_Token is ERC20Mintable, Ownable {
 
-    address private Owner = 0x8D0B109B01Dc44A249D7Fdf702f05eee5A1815d5;
-    string private name = "ABC_Token";
-    string private symbol = "ABC";
-    uint8 private decimals = 3;
-    uint8 private Mint[4];
-    uint256 private Stage[4];
-    Stage[0] = 500000000;
-    Stage[1] = 3000000000;
-    Stage[2] = 3000000000;
-    Stage[3] = 3500000000;
+  address private Owner = 0x8D0B109B01Dc44A249D7Fdf702f05eee5A1815d5;
+  string private name;
+  string private symbol;
+  uint8 private decimals;
+  uint8 private Mint[4];
+  uint256 private ABC_Token[4];
 
-    InitializeOwner(Owner);
+  Initialize(Owner);
 
-    function InitializeOwner(Owner) public initializer {
-      initialize(Owner);
-      mint(Owner, Stage.0);
-      Mint[0] = 1;
+  function Initialize(address Owner) public initializer {
+    name = "ABC_Token";
+    symbol = "ABC";
+    decimals = 3;
+    MinterRole.initialize(Owner);
+    Ownable.initialize(Owner);
+    Mint[0] = 0;
+    TFF_Token[0] = 500000000;
+    TFF_Token[1] = 3000000000;
+    TFF_Token[2] = 3000000000;
+    TFF_Token[3] = 3500000000;
+    Mint_ABC(0);
+  }
+
+  function Mint_ABC(uint8 _Stage) public onlyMinter returns (bool) {
+    if (Mint._Stage == 0 || Mint._Stage != 1 && Mint._Stage.sub(1) == 1) {
+      mint(Owner, TFF_Token._Stage);
+      Mint[_Stage] = 1;
+      return true;
     }
-
-    function Mint_ABC(uint8 _Stage) public {
-      if (_Stage == 0){
-        throw;
-      }
-      else{
-        if (Mint._Stage != 1){
-          mint(Owner, Stage._Stage);
-          Mint[_Stage] = 1;
-        }
-        else{
-          throw;
-        }
-      }
+    else {
+      throw;
     }
+  }
 
-    function name() public view returns (string memory) {
-        return name;
-    }
+  function name() public view returns (string memory) {
+    return name;
+  }
 
-    function symbol() public view returns (string memory) {
-        return symbol;
-    }
+  function symbol() public view returns (string memory) {
+    return symbol;
+  }
 
-    function decimals() public view returns (uint8) {
-        return decimals;
-    }
+  function decimals() public view returns (uint8) {
+    return decimals;
+  }
 
-    uint256[50] private ______gap;
+  uint256[50] private ______gap;
 
 }
