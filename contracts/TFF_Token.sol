@@ -8,6 +8,8 @@ import "zos-lib/contracts/Initializable.sol";
 /**
  * @title TFF_Token
  * @dev ERC721 minting logic with metadata, leveraging ZeppelinOS EVM
+ * ERC721 facilitates: a) preventing double voting per token and
+ * b) disabling trading during voting periods.  
  */
 
 contract TFF_Token is Initializable, ERC721, ERC721Metadata, MinterRole, Ownable {
