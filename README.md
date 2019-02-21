@@ -1,4 +1,4 @@
-﻿TheFaustFlick Project
+﻿#TheFaustFlick Project
 =====================
 
 Scope
@@ -39,7 +39,7 @@ Scope
 
  WebSites
  ---------------
- - http://TheFaustFlick.com 
+ - http://TheFaustFlick.com
  - http://estudios-amazonia.com
 
  Social Networks
