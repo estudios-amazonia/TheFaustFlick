@@ -14,6 +14,7 @@ import "zos-lib/contracts/Initializable.sol";
 
 contract TFF_Token is Initializable, ERC721, ERC721Metadata, MinterRole, Ownable {
 
+  address private Owner;
   string private Name;
   string private Symbol;
   string private TokenURI;
