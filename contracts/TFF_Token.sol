@@ -14,15 +14,12 @@ import "zos-lib/contracts/Initializable.sol";
 
 contract TFF_Token is Initializable, ERC721, ERC721Metadata, MinterRole, Ownable {
 
-  address private Owner = 0x8D0B109B01Dc44A249D7Fdf702f05eee5A1815d5;
   string private Name;
   string private Symbol;
   string private TokenURI;
   uint256 private TokenId;
-  uint8 private Mint[4];
-  uint256 private TFF_Token[4];
-
-  initialize(Owner);
+  uint8[4] private MintStage;
+  uint256[4] private TokensToMint;
 
   function initialize(address Owner) public initializer {
     require(ERC721._hasBeenInitialized());
@@ -35,22 +32,22 @@ contract TFF_Token is Initializable, ERC721, ERC721Metadata, MinterRole, Ownable
     Ownable.initialize(Owner);
     TokenURI = "http://thefaustflick.com/images/TFF_Token.png";
     TokenId = 1;
-    Mint[0] = 0;
-    TFF_Token[0] = 500000;
-    TFF_Token[1] = 3000000;
-    TFF_Token[2] = 3000000;
-    TFF_Token[3] = 3500000;
+    MintStage[0] = 0;
+    TokensToMint[0] = 500000;
+    TokensToMint[1] = 3000000;
+    TokensToMint[2] = 3000000;
+    TokensToMint[3] = 3500000;
     Mint_TFF(0);
   }
 
   function Mint_TFF(uint8 _Stage) public onlyMinter returns (bool) {
-    if (Mint._Stage == 0 || Mint._Stage != 1 && Mint._Stage.sub(1) == 1) {
-      for (uint256 counter = 1; counter <= TFF_Token._Stage; counter.add(1)) {
+    if (MintStage[_Stage] == 0 || MintStage[_Stage] != 1 && MintStage[_Stage.sub(1)] == 1) {
+      for (uint256 counter = 1; counter <= TokensToMint[_Stage]; counter++) {
         _mint(Owner, TokenId);
         _setTokenURI(TokenId, TokenURI);
         TokenId = TokenId.add(1);
       }
-      Mint[_Stage] = 1;
+      MintStage[_Stage] = 1;
       return true;
     }
     else {
