@@ -6,7 +6,7 @@ import "openzeppelin-eth/contracts/ownership/Ownable.sol";
 import "zos-lib/contracts/Initializable.sol";
 
 /**
- * @title TFF_Token
+ * @title TFF_Token http://estudios-amazonia.com/TheFaustFlick_WP.pdf
  * @dev ERC721 minting logic with metadata, leveraging ZeppelinOS EVM
  * @dev ERC721 facilitates preventing: a) double-voting per token and
  * b) disabling trading during voting periods.
@@ -43,10 +43,9 @@ contract TFF_Token is Initializable, ERC721, ERC721Metadata, MinterRole, Ownable
   }
 
   /**
-   * @dev TFF Minter function * Warning Below *
-   * Send Next Logical Correct Mint_TFF(_Stage) Value
+   * @dev TFF Minter function * Warning * Review White Paper and get last
+   * TokenId before sending next logically correct Mint_TFF(_Stage) value
    */
-
   function Mint_TFF(uint8 _Stage) public onlyMinter returns (bool) {
     require(MintStage[_Stage] == 0);
     uint256 tokensToMint = TokensToMint[_Stage];
@@ -59,6 +58,10 @@ contract TFF_Token is Initializable, ERC721, ERC721Metadata, MinterRole, Ownable
     return true;
   }
 
+  /**
+   * @dev Gets Last TokenId function * Useful to determine how many TFF Tokens
+   * have been minted. Helps figure the next logically correct Mint_TFF() Value
+   */
   function GetLastTokenId() public view returns (uint256) {
       return TokenId;
   }
