@@ -22,15 +22,16 @@ contract TFF_Token is Initializable, ERC721, ERC721Metadata, MinterRole, Ownable
   uint8[4] private MintStage;
   uint256[4] private TokensToMint;
 
-  function initialize(address Owner) public initializer {
+  function initialize(address sender) public initializer {
     require(ERC721._hasBeenInitialized());
     require(ERC721Metadata._hasBeenInitialized());
     Name = "TFF_Token";
     Symbol = "TFF";
     ERC721.initialize();
     ERC721Metadata.initialize(Name, Symbol);
-    MinterRole.initialize(Owner);
-    Ownable.initialize(Owner);
+    MinterRole.initialize(sender);
+    Ownable.initialize(sender);
+    Owner = sender;
     TokenURI = "http://thefaustflick.com/images/TFF_Token.png";
     TokenId = 1;
     MintStage[0] = 0;
@@ -41,19 +42,21 @@ contract TFF_Token is Initializable, ERC721, ERC721Metadata, MinterRole, Ownable
     Mint_TFF(0);
   }
 
+  /**
+   * @dev TFF Minter function ** Warning **
+   * Ensure Correct Mint_TFF(_Stage) Value
+   */
+
   function Mint_TFF(uint8 _Stage) public onlyMinter returns (bool) {
-    if (MintStage[_Stage] == 0 || MintStage[_Stage] != 1 && MintStage[_Stage.sub(1)] == 1) {
-      for (uint256 counter = 1; counter <= TokensToMint[_Stage]; counter++) {
-        _mint(Owner, TokenId);
-        _setTokenURI(TokenId, TokenURI);
-        TokenId = TokenId.add(1);
-      }
-      MintStage[_Stage] = 1;
-      return true;
+    require(MintStage[_Stage] == 0);
+    uint256 tokensToMint = TokensToMint[_Stage];
+    for (uint256 counter = 1; counter <= tokensToMint; counter++) {
+      _mint(Owner, TokenId);
+      _setTokenURI(TokenId, TokenURI);
+      TokenId = TokenId.add(1);
     }
-    else {
-      throw;
-    }
+    MintStage[_Stage] = 1;
+    return true;
   }
 
   function LastTokenId() public view returns (uint256) {
