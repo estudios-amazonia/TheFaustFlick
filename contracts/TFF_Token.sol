@@ -44,7 +44,7 @@ contract TFF_Token is Initializable, ERC721, ERC721Metadata, MinterRole, Ownable
 
   /**
    * @dev TFF Minter function * Warning Below *
-   * Ensure Correct Next Mint_TFF(_Stage) Value
+   * Send Next Logical Correct  Mint_TFF(_Stage) Value
    */
 
   function Mint_TFF(uint8 _Stage) public onlyMinter returns (bool) {
