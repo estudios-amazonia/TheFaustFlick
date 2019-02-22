@@ -34,7 +34,7 @@ contract TFF_Token is Initializable, ERC721, ERC721Metadata, MinterRole, Ownable
     Owner = sender;
     TokenURI = "http://thefaustflick.com/images/TFF_Token.png";
     TokenId = 1;
-    MintStage[0] = 0;
+    for (uint8 counter = 0; counter <= 3; counter++) { MintStage[counter] = 0; }
     TokensToMint[0] = 500000;
     TokensToMint[1] = 3000000;
     TokensToMint[2] = 3000000;
@@ -43,8 +43,8 @@ contract TFF_Token is Initializable, ERC721, ERC721Metadata, MinterRole, Ownable
   }
 
   /**
-   * @dev TFF Minter function ** Warning **
-   * Ensure Correct Mint_TFF(_Stage) Value
+   * @dev TFF Minter function * Warning Below *
+   * Ensure Correct Next Mint_TFF(_Stage) Value
    */
 
   function Mint_TFF(uint8 _Stage) public onlyMinter returns (bool) {
@@ -63,7 +63,7 @@ contract TFF_Token is Initializable, ERC721, ERC721Metadata, MinterRole, Ownable
       return TokenId;
   }
 
-  function GetTokenURI() public view returns (uint256) {
+  function GetTokenURI() public view returns (string memory) {
       return TokenURI;
   }
 
