@@ -59,7 +59,7 @@ contract TFF_Token is Initializable, ERC721, ERC721Metadata, MinterRole, Ownable
     return true;
   }
 
-  function LastTokenId() public view returns (uint256) {
+  function GetLastTokenId() public view returns (uint256) {
       return TokenId;
   }
 
