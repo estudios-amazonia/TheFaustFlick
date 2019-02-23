@@ -23,15 +23,15 @@ contract TFF_Token is Initializable, ERC721, ERC721Metadata, MinterRole, Ownable
   uint256[4] private TokensToMint;
 
   function initialize(address sender) public initializer {
-    require(ERC721._hasBeenInitialized());
-    require(ERC721Metadata._hasBeenInitialized());
-    Name = "TFF_Token";
+    Owner = sender;
     Symbol = "TFF";
+    Name = "TFF_Token";
     ERC721.initialize();
     ERC721Metadata.initialize(Name, Symbol);
-    MinterRole.initialize(sender);
     Ownable.initialize(sender);
-    Owner = sender;
+    MinterRole.initialize(sender);
+    require(ERC721._hasBeenInitialized());
+    require(ERC721Metadata._hasBeenInitialized());
     TokenURI = "http://thefaustflick.com/images/TFF_Token.png";
     TokenId = 1;
     for (uint8 counter = 0; counter <= 3; counter++) { MintStage[counter] = 0; }
