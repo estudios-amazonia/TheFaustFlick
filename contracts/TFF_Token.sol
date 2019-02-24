@@ -13,7 +13,7 @@ import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract TFF_Token is ERC721Full, ERC721MetadataMintable, Ownable {
 
-  address private Owner = 0x8045B92162Bb607454f8CF4CC44CBD9dff518495;
+  address private Owner = 0x36Fe25e27F640a8635Ba8f0F10F3eadFDf5bC04a;
   string private Name = "TFF_Token";
   string private Symbol = "TFF";
   string private TokenURI = "http://thefaustflick.com/images/TFF_Token.png";
@@ -33,7 +33,7 @@ contract TFF_Token is ERC721Full, ERC721MetadataMintable, Ownable {
   }
 
   /**
-   * @dev TFF Minter function * Warning * Review White Paper and get last
+   * @dev TFF Minter function * Warning * Review White Paper * Get last
    * TokenId to figure out next logically correct Mint_TFF(_Stage) value
    */
   function Mint_TFF(uint8 _Stage) public onlyOwner returns (bool) {
