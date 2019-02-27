@@ -13,50 +13,43 @@ import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract TFF_Token is ERC721Full, ERC721MetadataMintable, Ownable {
 
-  address private Owner = 0x8045B92162Bb607454f8CF4CC44CBD9dff518495;
   string private Name = "TheFaustFlick";
   string private Symbol = "TFF";
-  string private TokenURI = "http://thefaustflick.com/images/TFF_Token.png";
+  address private Owner;
+  string private TokenURI;
+  uint256 private Stage;
   uint256 private TokenId;
-  uint8[4] private MintStage;
   uint256[4] private TokensToMint;
 
   // Constructor
   constructor() ERC721Full(Name, Symbol) public {
+    // Kovan Wallet
+    Owner = 0xBB4c5B7da9EBcce738da626B43942b9aA4998Dd0;
+    TokenURI = "http://thefaustflick.com/images/TFF_Token.png";
+    Stage = 0;
     TokenId = 1;
-    for (uint8 counter = 0; counter <= 3; counter++) { MintStage[counter] = 0; }
     TokensToMint[0] = 500000;
     TokensToMint[1] = 3000000;
     TokensToMint[2] = 3000000;
     TokensToMint[3] = 3500000;
-    Mint_TFF(0);
   }
 
-  /**
-   * @dev TFF Minter function * Warning * Review White Paper * Get last
-   * TokenId to figure out next logically correct Mint_TFF(_Stage) value
-   */
-  function Mint_TFF(uint8 _Stage) public onlyOwner returns (bool) {
-    if (MintStage[_Stage] == 0) {
-      uint256 tokensToMint = TokensToMint[_Stage];
-      for (uint256 counter = 1; counter <= tokensToMint; counter++) {
-        mintWithTokenURI(Owner, TokenId, TokenURI);
-        TokenId = TokenId.add(1);
-      }
-      MintStage[_Stage] = 1;
-      return true;
+  function Mint_TFF() public onlyOwner returns (bool) {
+    require (Stage <=3);
+    uint256 tokensToMint = TokensToMint[Stage];
+    for (uint256 counter = 1; counter <= tokensToMint; counter++) {
+      mintWithTokenURI(Owner, TokenId, TokenURI);
+      TokenId = TokenId.add(1);
     }
+    Stage = Stage.add(1);
+    return true;
   }
 
-  /**
-   * @dev Gets Last TokenId function * Useful to determine how many TFF Tokens
-   * have been minted. Helps figure the next logically correct Mint_TFF() Value
-   */
   function GetLastTokenId() public view returns (uint256) {
-      return TokenId;
+    return TokenId;
   }
 
   function GetTokenURI() public view returns (string memory) {
-      return TokenURI;
+    return TokenURI;
   }
 }
