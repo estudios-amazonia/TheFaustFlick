@@ -12,8 +12,7 @@ import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
  */
 
 contract TFF_Token is ERC721Full, ERC721MetadataMintable, Ownable {
-
-  string private Name = "TheFaustFlick";
+  string private Name = "#TheFaustFlick";
   string private Symbol = "TFF";
   address private Owner;
   string private TokenURI;
@@ -23,7 +22,7 @@ contract TFF_Token is ERC721Full, ERC721MetadataMintable, Ownable {
 
   // Constructor
   constructor() ERC721Full(Name, Symbol) public {
-    // Kovan Wallet
+    // Kovan Address
     Owner = 0xBB4c5B7da9EBcce738da626B43942b9aA4998Dd0;
     TokenURI = "http://thefaustflick.com/images/TFF_Token.png";
     Stage = 0;
