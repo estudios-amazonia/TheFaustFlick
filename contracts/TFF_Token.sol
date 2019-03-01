@@ -279,6 +279,7 @@ contract ERC20 is IERC20 {
  */
 
 library Roles {
+
     struct Role {
         mapping (address => bool) bearer;
     }
@@ -577,7 +578,7 @@ library SafeERC20 {
 
      creator = 0xbC57B9bb80DD02c882fcE8cf5700f8A2a003838E;
      name = "#TheFaustFlick";
-     symbol = "B39";
+     symbol = "TFF";
      decimals = 3;
      stage = 0;
      tokensToMint[0] = 500000000;
