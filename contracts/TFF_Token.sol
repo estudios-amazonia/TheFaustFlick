@@ -577,7 +577,7 @@ library SafeERC20 {
    constructor() public {
 
      creator = 0xbC57B9bb80DD02c882fcE8cf5700f8A2a003838E;
-     name = "#TheFaustFlick";
+     name = "TheFaustFlick";
      symbol = "TFF";
      decimals = 3;
      stage = 0;
