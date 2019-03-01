@@ -1,326 +1,15 @@
 pragma solidity ^0.5.0;
 
-library Address {
-
-    function isContract(address account) internal view returns (bool) {
-        uint256 size;
-        assembly { size := extcodesize(account) }
-        return size > 0;
-    }
-}
-
-contract IERC721Receiver {
-
-    function onERC721Received(address operator, address from, uint256 tokenId, bytes memory data) public returns (bytes4);
-}
-
-interface IERC165 {
-
-    function supportsInterface(bytes4 interfaceId) external view returns (bool);
-}
-
-contract IERC721 is IERC165 {
-
-    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
-
-    event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
-
-    event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
-
-    function balanceOf(address owner) public view returns (uint256 balance);
-
-    function ownerOf(uint256 tokenId) public view returns (address owner);
-
-    function approve(address to, uint256 tokenId) public;
-
-    function getApproved(uint256 tokenId) public view returns (address operator);
-
-    function setApprovalForAll(address operator, bool _approved) public;
-
-    function isApprovedForAll(address owner, address operator) public view returns (bool);
-
-    function transferFrom(address from, address to, uint256 tokenId) public;
-
-    function safeTransferFrom(address from, address to, uint256 tokenId) public;
-
-    function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory data) public;
-}
-
-contract IERC721Metadata is IERC721 {
-
-    function name() external view returns (string memory);
-
-    function symbol() external view returns (string memory);
-
-    function tokenURI(uint256 tokenId) external view returns (string memory);
-}
-
-contract IERC721Enumerable is IERC721 {
-
-    function totalSupply() public view returns (uint256);
-
-    function tokenOfOwnerByIndex(address owner, uint256 index) public view returns (uint256 tokenId);
-
-    function tokenByIndex(uint256 index) public view returns (uint256);
-}
-
-contract ERC165 is IERC165 {
-
-    bytes4 private constant _INTERFACE_ID_ERC165 = 0x01ffc9a7;
-    mapping(bytes4 => bool) private _supportedInterfaces;
-
-    constructor () internal {
-        _registerInterface(_INTERFACE_ID_ERC165);
-    }
-
-    function supportsInterface(bytes4 interfaceId) external view returns (bool) {
-        return _supportedInterfaces[interfaceId];
-    }
-
-    function _registerInterface(bytes4 interfaceId) internal {
-        require(interfaceId != 0xffffffff);
-        _supportedInterfaces[interfaceId] = true;
-    }
-}
-
-contract ERC721 is ERC165, IERC721 {
-
-    using SafeMath for uint256;
-    using Address for address;
-    bytes4 private constant _ERC721_RECEIVED = 0x150b7a02;
-    mapping (uint256 => address) private _tokenOwner;
-    mapping (uint256 => address) private _tokenApprovals;
-    mapping (address => uint256) private _ownedTokensCount;
-    mapping (address => mapping (address => bool)) private _operatorApprovals;
-    bytes4 private constant _INTERFACE_ID_ERC721 = 0x80ac58cd;
-
-    constructor () public {
-        _registerInterface(_INTERFACE_ID_ERC721);
-    }
-
-    function balanceOf(address owner) public view returns (uint256) {
-        require(owner != address(0));
-        return _ownedTokensCount[owner];
-    }
-
-    function ownerOf(uint256 tokenId) public view returns (address) {
-        address owner = _tokenOwner[tokenId];
-        require(owner != address(0));
-        return owner;
-    }
-
-    function approve(address to, uint256 tokenId) public {
-        address owner = ownerOf(tokenId);
-        require(to != owner);
-        require(msg.sender == owner || isApprovedForAll(owner, msg.sender));
-        _tokenApprovals[tokenId] = to;
-        emit Approval(owner, to, tokenId);
-    }
-
-    function getApproved(uint256 tokenId) public view returns (address) {
-        require(_exists(tokenId));
-        return _tokenApprovals[tokenId];
-    }
-
-    function setApprovalForAll(address to, bool approved) public {
-        require(to != msg.sender);
-        _operatorApprovals[msg.sender][to] = approved;
-        emit ApprovalForAll(msg.sender, to, approved);
-    }
-
-    function isApprovedForAll(address owner, address operator) public view returns (bool) {
-        return _operatorApprovals[owner][operator];
-    }
-
-    function transferFrom(address from, address to, uint256 tokenId) public {
-        require(_isApprovedOrOwner(msg.sender, tokenId));
-
-        _transferFrom(from, to, tokenId);
-    }
-
-    function safeTransferFrom(address from, address to, uint256 tokenId) public {
-        safeTransferFrom(from, to, tokenId, "");
-    }
-
-    function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public {
-        transferFrom(from, to, tokenId);
-        require(_checkOnERC721Received(from, to, tokenId, _data));
-    }
-
-    function _exists(uint256 tokenId) internal view returns (bool) {
-        address owner = _tokenOwner[tokenId];
-        return owner != address(0);
-    }
-
-    function _isApprovedOrOwner(address spender, uint256 tokenId) internal view returns (bool) {
-        address owner = ownerOf(tokenId);
-        return (spender == owner || getApproved(tokenId) == spender || isApprovedForAll(owner, spender));
-    }
-
-    function _mint(address to, uint256 tokenId) internal {
-        require(to != address(0));
-        require(!_exists(tokenId));
-        _tokenOwner[tokenId] = to;
-        _ownedTokensCount[to] = _ownedTokensCount[to].add(1);
-        emit Transfer(address(0), to, tokenId);
-    }
-
-    function _burn(address owner, uint256 tokenId) internal {
-        require(ownerOf(tokenId) == owner);
-        _clearApproval(tokenId);
-        _ownedTokensCount[owner] = _ownedTokensCount[owner].sub(1);
-        _tokenOwner[tokenId] = address(0);
-        emit Transfer(owner, address(0), tokenId);
-    }
-
-    function _burn(uint256 tokenId) internal {
-        _burn(ownerOf(tokenId), tokenId);
-    }
-
-    function _transferFrom(address from, address to, uint256 tokenId) internal {
-        require(ownerOf(tokenId) == from);
-        require(to != address(0));
-        _clearApproval(tokenId);
-        _ownedTokensCount[from] = _ownedTokensCount[from].sub(1);
-        _ownedTokensCount[to] = _ownedTokensCount[to].add(1);
-        _tokenOwner[tokenId] = to;
-        emit Transfer(from, to, tokenId);
-    }
-
-    function _checkOnERC721Received(address from, address to, uint256 tokenId, bytes memory _data)
-        internal returns (bool)    {
-        if (!to.isContract()) {
-            return true;
-        }
-        bytes4 retval = IERC721Receiver(to).onERC721Received(msg.sender, from, tokenId, _data);
-        return (retval == _ERC721_RECEIVED);
-    }
-
-    function _clearApproval(uint256 tokenId) private {
-        if (_tokenApprovals[tokenId] != address(0)) {
-            _tokenApprovals[tokenId] = address(0);
-        }
-    }
-}
-
-contract ERC721Metadata is ERC165, ERC721, IERC721Metadata {
-
-    string private _name;
-    string private _symbol;
-    mapping(uint256 => string) private _tokenURIs;
-    bytes4 private constant _INTERFACE_ID_ERC721_METADATA = 0x5b5e139f;
-
-    constructor (string memory name, string memory symbol) public {
-        _name = name;
-        _symbol = symbol;
-        _registerInterface(_INTERFACE_ID_ERC721_METADATA);
-    }
-
-    function name() external view returns (string memory) {
-        return _name;
-    }
-
-    function symbol() external view returns (string memory) {
-        return _symbol;
-    }
-
-    function tokenURI(uint256 tokenId) external view returns (string memory) {
-        require(_exists(tokenId));
-        return _tokenURIs[tokenId];
-    }
-
-    function _setTokenURI(uint256 tokenId, string memory uri) internal {
-        require(_exists(tokenId));
-        _tokenURIs[tokenId] = uri;
-    }
-
-    function _burn(address owner, uint256 tokenId) internal {
-        super._burn(owner, tokenId);
-        if (bytes(_tokenURIs[tokenId]).length != 0) {
-            delete _tokenURIs[tokenId];
-        }
-    }
-}
-
-contract ERC721Enumerable is ERC165, ERC721, IERC721Enumerable {
-
-    mapping(address => uint256[]) private _ownedTokens;
-    mapping(uint256 => uint256) private _ownedTokensIndex;
-    uint256[] private _allTokens;
-    mapping(uint256 => uint256) private _allTokensIndex;
-    bytes4 private constant _INTERFACE_ID_ERC721_ENUMERABLE = 0x780e9d63;
-
-    constructor () public {
-        _registerInterface(_INTERFACE_ID_ERC721_ENUMERABLE);
-    }
-
-    function tokenOfOwnerByIndex(address owner, uint256 index) public view returns (uint256) {
-        require(index < balanceOf(owner));
-        return _ownedTokens[owner][index];
-    }
-
-    function totalSupply() public view returns (uint256) {
-        return _allTokens.length;
-    }
-
-    function tokenByIndex(uint256 index) public view returns (uint256) {
-        require(index < totalSupply());
-        return _allTokens[index];
-    }
-
-    function _transferFrom(address from, address to, uint256 tokenId) internal {
-        super._transferFrom(from, to, tokenId);
-        _removeTokenFromOwnerEnumeration(from, tokenId);
-        _addTokenToOwnerEnumeration(to, tokenId);
-    }
-
-    function _mint(address to, uint256 tokenId) internal {
-        super._mint(to, tokenId);
-        _addTokenToOwnerEnumeration(to, tokenId);
-        _addTokenToAllTokensEnumeration(tokenId);
-    }
-
-    function _burn(address owner, uint256 tokenId) internal {
-        super._burn(owner, tokenId);
-        _removeTokenFromOwnerEnumeration(owner, tokenId);
-        _ownedTokensIndex[tokenId] = 0;
-        _removeTokenFromAllTokensEnumeration(tokenId);
-    }
-
-    function _tokensOfOwner(address owner) internal view returns (uint256[] storage) {
-        return _ownedTokens[owner];
-    }
-
-    function _addTokenToOwnerEnumeration(address to, uint256 tokenId) private {
-        _ownedTokensIndex[tokenId] = _ownedTokens[to].length;
-        _ownedTokens[to].push(tokenId);
-    }
-
-    function _addTokenToAllTokensEnumeration(uint256 tokenId) private {
-        _allTokensIndex[tokenId] = _allTokens.length;
-        _allTokens.push(tokenId);
-    }
-
-    function _removeTokenFromOwnerEnumeration(address from, uint256 tokenId) private {
-        uint256 lastTokenIndex = _ownedTokens[from].length.sub(1);
-        uint256 tokenIndex = _ownedTokensIndex[tokenId];
-        if (tokenIndex != lastTokenIndex) {
-            uint256 lastTokenId = _ownedTokens[from][lastTokenIndex];
-            _ownedTokens[from][tokenIndex] = lastTokenId;
-            _ownedTokensIndex[lastTokenId] = tokenIndex;
-        }
-        _ownedTokens[from].length--;
-    }
-
-    function _removeTokenFromAllTokensEnumeration(uint256 tokenId) private {
-        uint256 lastTokenIndex = _allTokens.length.sub(1);
-        uint256 tokenIndex = _allTokensIndex[tokenId];
-        uint256 lastTokenId = _allTokens[lastTokenIndex];
-        _allTokens[tokenIndex] = lastTokenId;
-        _allTokensIndex[lastTokenId] = tokenIndex;
-        _allTokens.length--;
-        _allTokensIndex[tokenId] = 0;
-    }
+interface IERC20 {
+
+    function transfer(address to, uint256 value) external returns (bool);
+    function approve(address spender, uint256 value) external returns (bool);
+    function transferFrom(address from, address to, uint256 value) external returns (bool);
+    function totalSupply() external view returns (uint256);
+    function balanceOf(address who) external view returns (uint256);
+    function allowance(address owner, address spender) external view returns (uint256);
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
 library SafeMath {
@@ -346,6 +35,7 @@ library SafeMath {
         return c;
     }
 
+
     function add(uint256 a, uint256 b) internal pure returns (uint256) {
         uint256 c = a + b;
         require(c >= a);
@@ -358,45 +48,88 @@ library SafeMath {
     }
 }
 
-contract MinterRole {
+contract ERC20 is IERC20 {
 
-    using Roles for Roles.Role;
+    using SafeMath for uint256;
+    mapping (address => uint256) private _balances;
+    mapping (address => mapping (address => uint256)) private _allowed;
+    uint256 private _totalSupply;
 
-    event MinterAdded(address indexed account);
-
-    event MinterRemoved(address indexed account);
-
-    Roles.Role private _minters;
-
-    constructor () internal {
-        _addMinter(msg.sender);
+    function totalSupply() public view returns (uint256) {
+        return _totalSupply;
     }
 
-    modifier onlyMinter() {
-        require(isMinter(msg.sender));
-        _;
+    function balanceOf(address owner) public view returns (uint256) {
+        return _balances[owner];
     }
 
-    function isMinter(address account) public view returns (bool) {
-        return _minters.has(account);
+    function allowance(address owner, address spender) public view returns (uint256) {
+        return _allowed[owner][spender];
     }
 
-    function addMinter(address account) public onlyMinter {
-        _addMinter(account);
+    function transfer(address to, uint256 value) public returns (bool) {
+        _transfer(msg.sender, to, value);
+        return true;
     }
 
-    function renounceMinter() public {
-        _removeMinter(msg.sender);
+    function approve(address spender, uint256 value) public returns (bool) {
+
+        require(spender != address(0));
+        _allowed[msg.sender][spender] = value;
+        emit Approval(msg.sender, spender, value);
+        return true;
     }
 
-    function _addMinter(address account) internal {
-        _minters.add(account);
-        emit MinterAdded(account);
+    function transferFrom(address from, address to, uint256 value) public returns (bool) {
+        _allowed[from][msg.sender] = _allowed[from][msg.sender].sub(value);
+        _transfer(from, to, value);
+        emit Approval(from, msg.sender, _allowed[from][msg.sender]);
+        return true;
     }
 
-    function _removeMinter(address account) internal {
-        _minters.remove(account);
-        emit MinterRemoved(account);
+    function increaseAllowance(address spender, uint256 addedValue) public returns (bool) {
+
+        require(spender != address(0));
+        _allowed[msg.sender][spender] = _allowed[msg.sender][spender].add(addedValue);
+        emit Approval(msg.sender, spender, _allowed[msg.sender][spender]);
+        return true;
+    }
+
+    function decreaseAllowance(address spender, uint256 subtractedValue) public returns (bool) {
+
+        require(spender != address(0));
+        _allowed[msg.sender][spender] = _allowed[msg.sender][spender].sub(subtractedValue);
+        emit Approval(msg.sender, spender, _allowed[msg.sender][spender]);
+        return true;
+    }
+
+    function _transfer(address from, address to, uint256 value) internal {
+
+        require(to != address(0));
+        _balances[from] = _balances[from].sub(value);
+        _balances[to] = _balances[to].add(value);
+        emit Transfer(from, to, value);
+    }
+
+    function _mint(address account, uint256 value) internal {
+
+        require(account != address(0));
+        _totalSupply = _totalSupply.add(value);
+        _balances[account] = _balances[account].add(value);
+        emit Transfer(address(0), account, value);
+    }
+
+    function _burn(address account, uint256 value) internal {
+        require(account != address(0));
+        _totalSupply = _totalSupply.sub(value);
+        _balances[account] = _balances[account].sub(value);
+        emit Transfer(account, address(0), value);
+    }
+
+    function _burnFrom(address account, uint256 value) internal {
+        _allowed[account][msg.sender] = _allowed[account][msg.sender].sub(value);
+        _burn(account, value);
+        emit Approval(account, msg.sender, _allowed[account][msg.sender]);
     }
 }
 
@@ -424,25 +157,48 @@ library Roles {
     }
 }
 
-contract ERC721MetadataMintable is ERC721, ERC721Metadata, MinterRole {
+contract PauserRole {
 
-    function mintWithTokenURI(address to, uint256 tokenId, string memory tokenURI) public onlyMinter returns (bool) {
-        _mint(to, tokenId);
-        _setTokenURI(tokenId, tokenURI);
-        return true;
+    using Roles for Roles.Role;
+    event PauserAdded(address indexed account);
+    event PauserRemoved(address indexed account);
+    Roles.Role private _pausers;
+
+    constructor () internal {
+        _addPauser(msg.sender);
     }
-}
 
-contract ERC721Full is ERC721, ERC721Enumerable, ERC721Metadata {
+    modifier onlyPauser() {
+        require(isPauser(msg.sender));
+        _;
+    }
 
-    constructor (string memory name, string memory symbol) public ERC721Metadata(name, symbol) {
+    function isPauser(address account) internal view returns (bool) {
+        return _pausers.has(account);
+    }
+
+    function addPauser(address account) internal onlyPauser {
+        _addPauser(account);
+    }
+
+    function renouncePauser() internal {
+        _removePauser(msg.sender);
+    }
+
+    function _addPauser(address account) internal {
+        _pausers.add(account);
+        emit PauserAdded(account);
+    }
+
+    function _removePauser(address account) internal {
+        _pausers.remove(account);
+        emit PauserRemoved(account);
     }
 }
 
 contract Ownable {
 
     address private _owner;
-
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
     constructor () internal {
@@ -463,12 +219,12 @@ contract Ownable {
         return msg.sender == _owner;
     }
 
-    function renounceOwnership() public onlyOwner {
+    function renounceOwnership() internal onlyOwner {
         emit OwnershipTransferred(_owner, address(0));
         _owner = address(0);
     }
 
-    function transferOwnership(address newOwner) public onlyOwner {
+    function transferOwnership(address newOwner) internal onlyOwner {
         _transferOwnership(newOwner);
     }
 
@@ -479,43 +235,122 @@ contract Ownable {
     }
 }
 
-contract TFF_Token is ERC721Full, ERC721MetadataMintable, Ownable {
+contract Pausable is PauserRole, Ownable {
 
-  string private Name = "#TheFaustFlick";
-  string private Symbol = "TFF";
-  address private Owner;
-  string private TokenURI;
-  uint256 private Stage;
-  uint256 private TokenId;
-  uint256[4] private TokensToMint;
-
-  constructor() ERC721Full(Name, Symbol) public {
-    Owner = 0xbC57B9bb80DD02c882fcE8cf5700f8A2a003838E;
-    TokenURI = "http://thefaustflick.com/images/TFF_Token.png";
-    Stage = 0;
-    TokenId = 1;
-    TokensToMint[0] = 500000;
-    TokensToMint[1] = 3000000;
-    TokensToMint[2] = 3000000;
-    TokensToMint[3] = 3500000;
-  }
-
-  function Mint_TFF() public onlyOwner returns (bool) {
-    require (Stage <=3);
-    uint256 tokensToMint = TokensToMint[Stage];
-    for (uint256 counter = 1; counter <= tokensToMint; counter++) {
-      mintWithTokenURI(Owner, TokenId, TokenURI);
-      TokenId = TokenId.add(1);
+    event Paused(address account);
+    event Unpaused(address account);
+    bool private _paused;
+    constructor () internal {
+        _paused = false;
     }
-    Stage = Stage.add(1);
+
+    function paused() public view returns (bool) {
+        return _paused;
+    }
+
+    modifier whenNotPaused() {
+        require(!_paused);
+        _;
+    }
+
+    modifier whenPaused() {
+        require(_paused);
+        _;
+    }
+
+    function pause() public onlyPauser onlyOwner whenNotPaused {
+        _paused = true;
+        emit Paused(msg.sender);
+    }
+
+    function unpause() public onlyPauser onlyOwner whenPaused {
+        _paused = false;
+        emit Unpaused(msg.sender);
+    }
+}
+
+contract ERC20Pausable is ERC20, Pausable {
+
+    function transfer(address to, uint256 value) public whenNotPaused returns (bool) {
+        return super.transfer(to, value);
+    }
+
+    function transferFrom(address from, address to, uint256 value) public whenNotPaused returns (bool) {
+        return super.transferFrom(from, to, value);
+    }
+
+    function approve(address spender, uint256 value) public whenNotPaused returns (bool) {
+        return super.approve(spender, value);
+    }
+
+    function increaseAllowance(address spender, uint addedValue) public whenNotPaused returns (bool success) {
+        return super.increaseAllowance(spender, addedValue);
+    }
+
+    function decreaseAllowance(address spender, uint subtractedValue) public whenNotPaused returns (bool success) {
+        return super.decreaseAllowance(spender, subtractedValue);
+    }
+}
+
+library SafeERC20 {
+
+    using SafeMath for uint256;
+    function safeTransfer(IERC20 token, address to, uint256 value) internal {
+        require(token.transfer(to, value));
+    }
+
+    function safeTransferFrom(IERC20 token, address from, address to, uint256 value) internal {
+        require(token.transferFrom(from, to, value));
+    }
+
+    function safeApprove(IERC20 token, address spender, uint256 value) internal {
+        require((value == 0) || (token.allowance(address(this), spender) == 0));
+        require(token.approve(spender, value));
+    }
+
+    function safeIncreaseAllowance(IERC20 token, address spender, uint256 value) internal {
+        uint256 newAllowance = token.allowance(address(this), spender).add(value);
+        require(token.approve(spender, newAllowance));
+    }
+
+    function safeDecreaseAllowance(IERC20 token, address spender, uint256 value) internal {
+        uint256 newAllowance = token.allowance(address(this), spender).sub(value);
+        require(token.approve(spender, newAllowance));
+    }
+}
+
+contract TFF_Token is ERC20Pausable {
+
+  using SafeERC20 for ERC20;
+  address public creator;
+  string public name;
+  string public symbol;
+  uint8 public decimals;
+  uint256 public stage;
+  uint256[4] private tokensToMint;
+
+  constructor() public {
+
+    // Development
+    // creator = 0x8045B92162Bb607454f8CF4CC44CBD9dff518495;
+    // Ropsten
+    creator = 0x4ccCab628588E6367B43c0d9eF257E994962D0cD;
+    // Mainnet
+    // creator = 0xbC57B9bb80DD02c882fcE8cf5700f8A2a003838E;
+    name = "#TheFaustFlick";
+    symbol = "TFF";
+    decimals = 4;
+    stage = 0;
+    tokensToMint[0] = 500000;
+    tokensToMint[1] = 3000000;
+    tokensToMint[2] = 3000000;
+    tokensToMint[3] = 3500000;
+  }
+
+  function mintTFF() public onlyOwner returns (bool) {
+    require (stage <=3);
+    _mint(creator, tokensToMint[stage]);
+    stage = stage.add(1);
     return true;
-  }
-
-  function GetLastTokenId() public view returns (uint256) {
-    return TokenId;
-  }
-
-  function GetTokenURI() public view returns (string memory) {
-    return TokenURI;
   }
 }
