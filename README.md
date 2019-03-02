@@ -4,7 +4,7 @@
 Scope
 -----
  - Release of #TheFaustFlick (TFF) White Paper (Business Plan) ✔
- - Development & Deployment of TFF_Token (ERC-721)
+ - Development & Deployment of TFF_Token (ERC-20) ✔
  - Deployment of TFF_Token Direct Presale
  - Deployment of TFF_Token Initial Coin Offering
  - Development & Deployment of the Film Business Buster (FBB) Smart Contract™
@@ -13,8 +13,8 @@ Scope
  Timing
  ------
  - White Paper              [ Feb  1st 2019 ] ✔
- - TFF_Token                [ Mar  1st 2019 ]
- - TFF Token Direct Presale [ Mar  1st 2019 ]
+ - TFF_Token                [ Mar  1st 2019 ] ✔
+ - TFF Token Direct Presale [ Mar  1st 2019 ] ✔
  - TFF Token ICO            [ Apr  1st 2019 - Jul 14th 2019 ]
  - FBB Smart Contract       [ Jun  1st 2019 ]
  - TFF Filmmaking Process   [ Jul 15th 2019 - Jun 30th 2020 ]
@@ -24,7 +24,7 @@ Scope
  TFF Technical Team
  ------------------
  - g.a. mercado - project leader             - mercado.ga@gmail.com
- - azael rondón - technical consultant       - jrondon70@gmail.com
+ - azael rondón - technical advisor       - jrondon70@gmail.com
  - ed mercado   - digital ecosystem advisor  - mercado.ea@email.com
 
  TFF Production Team
@@ -57,4 +57,5 @@ Scope
  Publications
  ------------
  - https://medium.com/@flickmaking
+ - https://www.reddit.com/u/tff_token
  - https://github.com/estudios-amazonia/TheFaustFlick
