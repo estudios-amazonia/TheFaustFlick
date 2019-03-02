@@ -5,7 +5,7 @@ Scope
 -----
  - Release of #TheFaustFlick (TFF) White Paper (Business Plan) ✔
  - Development & Deployment of TFF_Token (ERC-20) ✔
- - Deployment of TFF_Token Direct Presale
+ - Deployment of TFF_Token Direct Presale  ✔
  - Deployment of TFF_Token Initial Coin Offering
  - Development & Deployment of the Film Business Buster (FBB) Smart Contract™
  - Execute Business Case #TheFaustFlick Film Project via the FBB Smart Contract™
