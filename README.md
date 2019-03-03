@@ -1,6 +1,10 @@
 ﻿#TheFaustFlick Project
 =====================
 
+Description
+-----
+A comedy film to be executive produced by TheFaustFlick Token via the Film Business Buster Smart Contract™ and to be distributed worldwide.
+
 Scope
 -----
  - Release of #TheFaustFlick (TFF) White Paper (Business Plan) ✔
