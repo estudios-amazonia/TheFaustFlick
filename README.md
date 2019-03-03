@@ -3,7 +3,7 @@
 
 Description
 -----
-A comedy film to be executive produced by TheFaustFlick (TFF) Token via the Film Business Buster (FBB) Smart Contract™ and to be distributed worldwide.
+A comedy film to be executive produced by TheFaustFlick (TFF) Token via the Film Business Buster (FBB) Smart Contract™.
 
 Scope
 -----
