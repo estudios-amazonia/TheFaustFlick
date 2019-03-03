@@ -3,11 +3,11 @@
 
 Description
 -----
-A comedy film to be executive produced by TheFaustFlick Token via the Film Business Buster (FBB) Smart Contract™ and to be distributed worldwide.
+A comedy film to be executive produced by TheFaustFlick (TFF) Token via the Film Business Buster (FBB) Smart Contract™ and to be distributed worldwide.
 
 Scope
 -----
- - Release of #TheFaustFlick (TFF) White Paper (Business Plan) ✔
+ - Release of #TheFaustFlick White Paper (Business Plan) ✔
  - Development & Deployment of TFF Token (ERC-20) ✔
  - Deployment of TFF Token Presale  ✔
  - Deployment of TFF Token Initial Coin Offering
