@@ -34,4 +34,7 @@
 #
 # White Paper: http://estudios-amazonia.com/TheFaustFlick_WP.pdf
 #              https://docs.google.com/document/d/1OPnDEDW09s414ufTlwmjnVIvgadlUgwXml2zVrAQitI/edit?usp=sharing
+#
+#  Wallet:   https://trustwallet.com/
+#
 # More to come!
