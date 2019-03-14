@@ -3,7 +3,7 @@
 
 Description
 -----
-A comedy film to be executive produced by TheFaustFlick (TFF) Token via the Film Business Buster (FBB) Smart Contract™.
+A comedy film to be executive produced by TheFaustFlick (TFF) Token.
 
 Scope
 -----
@@ -11,30 +11,23 @@ Scope
  - Development & Deployment of TFF Token (ERC-20) ✔
  - Deployment of TFF Token Presale  ✔
  - Deployment of TFF Token Initial Coin Offering
- - Development & Deployment of the FBB Smart Contract™
- - Execute Business Case #TheFaustFlick Film Project via the FBB Smart Contract™
+ - Produce #TheFaustFlick Film Project via the Film Business Buster™
 
  Timing
  ------
  - White Paper              [ Feb  1st 2019 ] ✔
- - TFF_Token                [ Mar  1st 2019 ] ✔
+ - TFF Token Creation       [ Mar  1st 2019 ] ✔
  - TFF Token Presale        [ Mar  1st 2019 ] ✔
  - TFF Token ICO            [ Apr  1st 2019 - Jul 14th 2019 ]
- - FBB Smart Contract       [ Jun  1st 2019 ]
- - TFF Filmmaking Process   [ Jul 15th 2019 - Jun 30th 2020 ]
- - TFF Film Business Cycle  [ Jul  1st 2020 - Dec 31st 2020 ]
+ - Filmmaking Process       [ Jul 15th 2019 - Jun 30th 2020 ]
+ - Film Business Cycle      [ Jul  1st 2020 - Dec 31st 2020 ]
  - Net Profits Proceeds     [ Jan  1st 2021 ]
 
  TFF Technical Team
  ------------------
  - g.a. mercado - project leader             - mercado.ga@gmail.com
- - azael rondón - technical advisor       - jrondon70@gmail.com
- - ed mercado   - digital ecosystem advisor  - mercado.ea@email.com
-
- TFF Production Team
- -------------------
- - g.a. mercado - writer producer director - director@estudios-amazonia.com
- - tiby esteves - executive producer       - producer@estudios-amazonia.com
+ - azael rondón - technical advisor          - jrondon70@gmail.com
+ - ed mercado   - digital ecosystem leader   - mercado.ea@email.com
 
  White Paper
  -----------
