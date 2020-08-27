@@ -18,10 +18,10 @@ Scope
  - White Paper              [ Feb  1st 2019 ] ✔
  - TFF Token Creation       [ Mar  1st 2019 ] ✔
  - TFF Token Presale        [ Mar  1st 2019 - Apr 30th 2020 ] ✔
- - TFF Token STO/ICO        [ May  1st 2019 - Mar 31st 2020 ]
- - Filmmaking Process       [ Apr  1st 2020 - Dec 31st 2020 ]
- - Film Business Cycle      [ Jan  1st 2021 - Jul 31st 2021 ]
- - Net Profits Proceeds     [ Aug  1st 2021 ]
+ - TFF Token STO/ICO        [ May  1st 2019 - Dec 31st 2020 ]
+ - Filmmaking Process       [ Jan  1st 2021 - Jul 31st 2021 ]
+ - Film Business Cycle      [ Aug  1st 2021 - Dec 31st 2021 ]
+ - Net Profits Proceeds     [ Jan  1st 2022 ]
 
  TFF Technical Team
  ------------------
