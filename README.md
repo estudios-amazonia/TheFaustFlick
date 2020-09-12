@@ -27,7 +27,7 @@ Scope
  ------------------
  - g.a. mercado - project leader             - mercado.ga@gmail.com
  - azael rondón - technical advisor          - jrondon70@gmail.com
- - ed mercado   - digital ecosystem leader   - mercado.ea@email.com
+ - ed mercado   - digital ecosystem leader   - mercado.ea@gmaill.com
 
  White Paper
  -----------
