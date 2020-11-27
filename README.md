@@ -1,48 +1,58 @@
-﻿#TheFaustFlick Project
+﻿TheFaustFlick Project
 =====================
 
 Description
 -----
-A comedy film to be executive produced by TheFaustFlick (TFF) Token.
+A comedy film for the 10.4 million LatinX frequent moviegoer.
 
 Scope
 -----
- - Release of #TheFaustFlick White Paper (Business Plan) ✔
- - Development & Deployment of TFF Token (ERC-20) ✔
- - Deployment of TFF Token Presale  ✔
- - Deployment of TFF Token Security Token Offering / Initial Coin Offering  
- - Produce #TheFaustFlick Film Project via the Film Business Buster™ Smart Contract
+ - Whitepaper V1  ✔
+ - TFF Special Purpose Vehicle V1 ✔
+ - Tier 3 Media • Bounty Campaign  ✔
+ - Bounty Completion ✔
+ - Whitepaper V2 ✔
+ - TFF Special Purpose Vehicle V2 ✔
+ - Tier 1 Media • Presale • Initial Public Offering  
+ - Filmmaking • Film Business Cycle via Film Vault
 
- Timing
+ Roadmap
  ------
- - White Paper              [ Feb  1st 2019 ] ✔
- - TFF Token Creation       [ Mar  1st 2019 ] ✔
- - TFF Token Presale        [ Mar  1st 2019 - Apr 30th 2020 ] ✔
- - TFF Token STO/ICO        [ May  1st 2019 - Dec 31st 2020 ] ✔
- - Filmmaking Process       [ Feb  1st 2021 - Jul 31st 2021 ]
- - Film Business Cycle      [ Aug  1st 2021 - Dec 31st 2021 ]
- - Net Profits Proceeds     [ Jan  1st 2022 ]
+ - Whitepaper V1            [ Q1 - 2019 ] ✔
+ - TFF SPV V1 (ERC-20)      [ Q2 - 2019 ] ✔
+ - Tier 3 Media             [ Q3 - 2019 ] ✔
+ - Bounty Campaign          [ Q3 - 2019 ] ✔
+ - Bounty Completion        [ Q4 - 2019 ] ✔
+ - Whitepaper V2            [ Q4 - 2020 ] ✔
+ - Presale • Tier 1 Media   [ Q1 - 2021 ]
+ - DeFi Launch • IPO        [ Q1 - 2021 ]
+ - LoI Pursuance            [ Soft Cap ]
+ - Filmmaking Offering      [ +Q1 ]
+ - Pre-Production           [ +Q2 ]
+ - Production • Rough Cut   [ +Q3 ]
+ - Film Business Offering   [ +Q4 ]
+ - Go-to-Market • Dist.     [ +Q5 ]
+ - Premiere • Dividends     [ +Q6 ]
+ - Financial Records        [ +Q7 ]
 
- TFF Technical Team
+ TheFaustFlick Promoting Team
  ------------------
  - g.a. mercado - project leader             - mercado.ga@gmail.com
- - azael rondón - technical advisor          - jrondon70@gmail.com
- - ed mercado   - digital ecosystem leader   - mercado.ea@email.com
+ - e.a. mercado - digital ecosystem adviser  - mercado.ea@email.com
 
- White Paper
+ Whitepaper
  -----------
- - http://estudios-amazonia.com/TheFaustFlick_WP.pdf
- - https://docs.google.com/document/d/1OPnDEDW09s414ufTlwmjnVIvgadlUgwXml2zVrAQitI/edit?usp=sharing
+ - https://estudios-amazonia.com/TheFaustFlick_WP_V2.pdf
 
  WebSites
  ---------------
- - http://TheFaustFlick.com
- - http://estudios-amazonia.com
+ - https://TheFaustFlick.com
+ - https://estudios-amazonia.com
 
  Social Networks
  ---------------
  - https://t.me/TheFaustFlick
- - https://twitter.com/TFF_Token
+ - https://twitter.com/TFF_SPV
  - https://twitter.com/flickmaking
  - https://twitter.com/TheFaustFlick
  - https://twitter.com/caressinghearts
@@ -54,5 +64,4 @@ Scope
  Publications
  ------------
  - https://medium.com/@flickmaking
- - https://www.reddit.com/u/tff_token
  - https://github.com/estudios-amazonia/TheFaustFlick
