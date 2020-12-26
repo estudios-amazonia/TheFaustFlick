@@ -332,7 +332,7 @@ contract TFF_Token is ERC20Pausable {
 
   constructor() public {
 
-    creator = 0xbC57B9bb80DD02c882fcE8cf5700f8A2a003838E;
+    creator = 0x4ccCab628588E6367B43c0d9eF257E994962D0cD;
     name = "TheFaustFlick";
     symbol = "TFF";
     decimals = 9;
