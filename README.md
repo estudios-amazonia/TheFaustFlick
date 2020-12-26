@@ -26,7 +26,7 @@ Scope
  - Whitepaper V2            [ Q4 - 2020 ] ✔
  - Presale • Tier 1 Media   [ Q1 - 2021 ]
  - DeFi Launch • IPO        [ Q1 - 2021 ]
- - TFF v1=v2 Swaps          [ Q1 - 2021 ]
+ - TFF v2=TFF v1 Swaps      [ Q1 - 2021 ]
  - LoI Pursuance            [ Soft Cap ]
  - Filmmaking Offering      [ +Q1 ]
  - Pre-Production           [ +Q2 ]
