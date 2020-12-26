@@ -7,12 +7,12 @@ A comedy film for the 10.4 million LatinX frequent moviegoer.
 
 Scope
 -----
- - Whitepaper V1  ✔
- - TFF Special Purpose Vehicle V1 ✔
+ - Whitepaper v1  ✔
+ - TFF Special Purpose Vehicle v1 ✔
  - Tier 3 Media • Bounty Campaign  ✔
  - Bounty Completion ✔
- - Whitepaper V2 ✔
- - TFF Special Purpose Vehicle V2 ✔
+ - Whitepaper v2 ✔
+ - TFF Special Purpose Vehicle v2 ✔
  - Tier 1 Media • Presale • Initial Public Offering  
  - Filmmaking • Film Business Cycle via Film Vault
 
@@ -26,6 +26,7 @@ Scope
  - Whitepaper V2            [ Q4 - 2020 ] ✔
  - Presale • Tier 1 Media   [ Q1 - 2021 ]
  - DeFi Launch • IPO        [ Q1 - 2021 ]
+ - TFF v1=v2 Swaps          [ Q1 - 2021 ]
  - LoI Pursuance            [ Soft Cap ]
  - Filmmaking Offering      [ +Q1 ]
  - Pre-Production           [ +Q2 ]
