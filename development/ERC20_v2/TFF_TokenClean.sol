@@ -331,19 +331,20 @@ contract TFF_Token is ERC20Pausable {
 
   constructor() public {
 
-    creator = 0xbC57B9bb80DD02c882fcE8cf5700f8A2a003838E;
-    name = "TheFaustFlick";
-    symbol = "TFF";
-    decimals = 3;
-    stage = 0;
-    tokensToMint[0] = 500000000;
-    tokensToMint[1] = 3000000000;
-    tokensToMint[2] = 3000000000;
-    tokensToMint[3] = 3500000000;
+  creator = 0x4ccCab628588E6367B43c0d9eF257E994962D0cD;
+  name = "TheFaustFlick";
+  symbol = "TFF";
+  decimals = 9;
+  stage = 0;
+  tokensToMint[0] = 510000000000000;
+  tokensToMint[1] = 1000000000000000;
+  tokensToMint[2] = 4000000000000000;
+  tokensToMint[3] = 490000000000000;
+  tokensToMint[4] = 4000000000000000;
   }
 
   function mintTFF() public onlyOwner returns (bool) {
-    require (stage <=3);
+    require (stage <=4);
     _mint(creator, tokensToMint[stage]);
     stage = stage.add(1);
     return true;
