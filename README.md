@@ -43,7 +43,7 @@ Scope
 
  Whitepaper
  -----------
- - https://estudios-amazonia.com/TheFaustFlick_WP_V2.pdf
+ - https://estudios-amazonia.com/TheFaustFlick_WP_v2.pdf
 
  WebSites
  ---------------
