@@ -337,11 +337,13 @@ contract FAUST_Token is ERC20Pausable {
     symbol = "FAUST";
     decimals = 9;
     stage = 0;
-    tokensToMint[0] = 510000000000000;
-    tokensToMint[1] = 1000000000000000;
-    tokensToMint[2] = 4000000000000000;
-    tokensToMint[3] = 490000000000000;
+    tokensToMint[0] = 45000000000000;
+    tokensToMint[1] = 405000000000000;
+    tokensToMint[2] = 1000000000000000;
+    tokensToMint[3] = 60000000000000;
     tokensToMint[4] = 4000000000000000;
+    tokensToMint[5] = 490000000000000;
+    tokensToMint[6] = 4000000000000000;
   }
 
   function mintFAUST() public onlyOwner returns (bool) {
