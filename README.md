@@ -24,7 +24,7 @@ Scope
  - Bounty Campaign          [ Q3 2019 ] ✔
  - Bounty Completion        [ Q4 2019 ] ✔
  - Whitepaper v2            [ Q4 2020 ] ✔
- - Smart Contract           [ Q1 2021 ]
+ - Smart Contract v2        [ Q1 2021 ]
  - Presales                 [ Q1 2021 ]
  - Tier 1 Media             [ Q2 2021 ]
  - Initial Offering         [ Q2 2021 ]
