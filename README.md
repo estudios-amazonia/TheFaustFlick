@@ -19,14 +19,16 @@ Scope
  Roadmap
  ------
  - Whitepaper v1            [ Q1 2019 ] ✔
- - TFF SPV (ERC-20)         [ Q2 2019 ] ✔
+ - Smart Contract v1        [ Q2 2019 ] ✔
  - Tier 3 Media             [ Q3 2019 ] ✔
  - Bounty Campaign          [ Q3 2019 ] ✔
  - Bounty Completion        [ Q4 2019 ] ✔
  - Whitepaper v2            [ Q4 2020 ] ✔
- - Presale • Tier 1 Media   [ Q1 2021 ]
- - DeFi Launch • IPO        [ Q1 2021 ]
- - FAUST=TFF Swaps          [ Q1 2021 ]
+ - Smart Contract           [ Q1 2021 ]
+ - Presales                 [ Q1 2021 ]
+ - Tier 1 Media             [ Q2 2021 ]
+ - Initial Offering         [ Q2 2021 ]
+ - FAUST=TFF Swaps          [ Q3 2021 ]
  - LoI Pursuance            [ Soft Cap ]
  - Filmmaking Offering      [ +Q1 ]
  - Pre-Production           [ +Q2 ]
