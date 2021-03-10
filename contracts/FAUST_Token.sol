@@ -347,7 +347,7 @@ contract FAUST_Token is ERC20Pausable {
   }
 
   function mintFAUST() public onlyOwner returns (bool) {
-    require (stage <=4);
+    require (stage <=6);
     _mint(creator, tokensToMint[stage]);
     stage = stage.add(1);
     return true;
