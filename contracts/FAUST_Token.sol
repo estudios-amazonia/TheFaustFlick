@@ -328,7 +328,7 @@ contract FAUST_Token is ERC20Pausable {
   string public symbol;
   uint8 public decimals;
   uint256 public stage;
-  uint256[5] private tokensToMint;
+  uint256[7] private tokensToMint;
 
   constructor() public {
 
