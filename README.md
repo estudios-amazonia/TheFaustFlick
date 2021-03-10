@@ -33,10 +33,14 @@ Scope
  - Filmmaking Offering      [ +Q1 ]
  - Pre-Production           [ +Q2 ]
  - Production • Rough Cut   [ +Q3 ]
- - Film Business Offering   [ +Q4 ]
- - Go-to-Market • Dist.     [ +Q5 ]
- - Premiere • Dividends     [ +Q6 ]
- - Financial Records        [ +Q7 ]
+ - Final Cut • Film Teaser  [ +Q4 ]
+ - Film Business Offering   [ +Q5 ]
+ - Go-to-Market • Dist.     [ +Q6 ]
+ - Marketing • Premiere     [ +Q7 ]
+ - Box-Office Collection    [ +Q8 ]
+ - Net Profits              [ +Q8 ]
+ - Financial Records        [ +Q9 ]
+ - Film Markets Expansion   [ +Q10 ]
 
  TheFaustFlick Promoting Team
  ------------------
